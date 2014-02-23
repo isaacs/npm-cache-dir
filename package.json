@@ -3,8 +3,14 @@
   "version": "0.0.0",
   "description": "I am checking and creating npm's cache dir",
   "main": "index.js",
-  "dependencies": {},
-  "devDependencies": {},
+  "dependencies": {
+    "mkdirp": "~0.3.5",
+    "chownr": "0"
+  },
+  "devDependencies": {
+    "rimraf": "^2.2.6",
+    "tap": "~0.4.8"
+  },
   "scripts": {
     "test": "tap test/*.js"
   },
