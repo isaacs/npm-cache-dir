@@ -1,0 +1,25 @@
+{
+  "name": "npm-cache-dir",
+  "version": "0.0.0",
+  "description": "I am checking and creating npm's cache dir",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {},
+  "scripts": {
+    "test": "tap test/*.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/robertkowalski/npm-cache-dir.git"
+  },
+  "homepage": "https://github.com/robertkowalski/npm-cache-dir",
+  "keywords": [
+    "npm,",
+    "cache"
+  ],
+  "author": "Robert Kowalski <rok@kowalski.gd>",
+  "license": "BSD-2-Clause",
+  "bugs": {
+    "url": "https://github.com/robertkowalski/npm-cache-dir/issues"
+  }
+}
