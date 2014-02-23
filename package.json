@@ -1,6 +1,6 @@
 {
   "name": "npm-cache-dir",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "I am checking and creating npm's cache dir",
   "main": "index.js",
   "dependencies": {
