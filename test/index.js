@@ -18,7 +18,7 @@ test("getCacheStat creates a directory if not exists", function (t) {
   setup()
   fs.exists(npm.cache, function (e) {
     t.notOk(e, "cache does not exist")
-    cacheDir.getCacheStat(npm, log, function () {
+    cacheDir.getCacheStat(npm.cache, log, function () {
       fs.exists(npm.cache, function (e) {
         t.ok(e, "cache exists")
         t.end()
@@ -29,7 +29,7 @@ test("getCacheStat creates a directory if not exists", function (t) {
 
 test("getCacheStat returns stats", function (t) {
   setup()
-  cacheDir.getCacheStat(npm, log, function (err, d) {
+  cacheDir.getCacheStat(npm.cache, log, function (err, d) {
     t.ok(d.uid, "uid set")
     t.ok(d.gid, "gid set")
     t.end()
@@ -41,7 +41,7 @@ test("makeCacheDir creates directories", function (t) {
   npm.cache = path.join(fixtures, "npm-test-2")
   fs.exists(npm.cache, function (e) {
     t.notOk(e, "cache does not exist")
-    cacheDir.makeCacheDir(npm, log, function () {
+    cacheDir.makeCacheDir(npm.cache, log, function () {
       fs.exists(npm.cache, function (e) {
         t.ok(e, "cache exists")
         t.end()

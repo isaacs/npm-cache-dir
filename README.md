@@ -7,9 +7,9 @@ lazily
 
 ## API
 
-### .getCacheStat(npm, log, cb)
+### .getCacheStat(npmCache, log, cb)
 Get fs.stats about npm's cache dir, and create the cachedir
 if it does not exist
 
-### .makeCacheDir(npm, log, cb)
+### .makeCacheDir(npmCache, log, cb)
 Create the cache dir according to the setting in `npm.cache`

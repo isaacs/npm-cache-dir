@@ -6,12 +6,12 @@ var fs = require("fs")
 var cacheStat = null
 
 exports.getCacheStat = getCacheStat
-function getCacheStat (npm, log, cb) {
+function getCacheStat (npmCache, log, cb) {
   if (cacheStat) return cb(null, cacheStat)
-  fs.stat(npm.cache, function (er, st) {
-    if (er) return makeCacheDir(npm, log, cb)
+  fs.stat(npmCache, function (er, st) {
+    if (er) return makeCacheDir(npmCache, log, cb)
     if (!st.isDirectory()) {
-      log.error("getCacheStat", "invalid cache dir %j", npm.cache)
+      log.error("getCacheStat", "invalid cache dir %j", npmCache)
       return cb(er)
     }
     return cb(null, cacheStat = st)
@@ -19,8 +19,8 @@ function getCacheStat (npm, log, cb) {
 }
 
 exports.makeCacheDir = makeCacheDir
-function makeCacheDir (npm, log, cb) {
-  if (!process.getuid) return mkdir(npm.cache, cb)
+function makeCacheDir (npmCache, log, cb) {
+  if (!process.getuid) return mkdir(npmCache, cb)
 
   var uid = +process.getuid()
     , gid = +process.getgid()
@@ -32,7 +32,7 @@ function makeCacheDir (npm, log, cb) {
 
   if (uid !== 0 || !process.env.HOME) {
     cacheStat = {uid: uid, gid: gid}
-    return mkdir(npm.cache, afterMkdir)
+    return mkdir(npmCache, afterMkdir)
   }
 
   fs.stat(process.env.HOME, function (er, st) {
@@ -42,7 +42,7 @@ function makeCacheDir (npm, log, cb) {
     }
     cacheStat = st
     log.silly("makeCacheDir", "cache dir uid, gid", [st.uid, st.gid])
-    return mkdir(npm.cache, afterMkdir)
+    return mkdir(npmCache, afterMkdir)
   })
 
   function afterMkdir (er, made) {
